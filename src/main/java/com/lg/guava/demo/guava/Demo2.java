@@ -71,7 +71,9 @@ public class Demo2 {
                  * 加附加的功能
                  */
                 .maximumSize(3) // 最大缓存个数
-                // 统计
+                .concurrencyLevel(Runtime.getRuntime().availableProcessors())
+                .refreshAfterWrite(1, TimeUnit.SECONDS)
+                // 统计命中率
                 .recordStats()
                 // 监听缓存通知
                 .removalListener(new RemovalListener<Object, Object>() {
